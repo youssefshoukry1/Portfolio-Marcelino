@@ -3,11 +3,11 @@ import { motion as Motion } from 'framer-motion';
 import img from '../../assets/img/IMG-20250814-WA0069.jpg'
 
 export default function Home() {
-  const fullText = "Hello, I'm Marcelino Hany"
+  const fullText = "Hay, I'm Marcelino Hany"
   const [displayedText, setDisplayedText] = useState("")
 
   useEffect(() => {
-    let index = 4 // بدء الكتابة من الحرف الخامس
+    let index = 4
     const interval = setInterval(() => {
       setDisplayedText(fullText.slice(0, index))
       index++
@@ -21,47 +21,45 @@ export default function Home() {
     <section 
       id="Home-section" 
       className="min-h-screen flex flex-col justify-center items-center text-center 
-                 bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#334155] text-white"
+                bg-gradient-to-b from-blue-200 via-white to-blue-100 px-6"
     >
       {/* صورة البروفايل */}
       <Motion.img
         src={img}
         alt="Profile"
-        className="w-40 h-40 rounded-full shadow-xl border-4 border-white object-cover"
+        className="w-48 h-48 md:w-56 md:h-56 rounded-full shadow-2xl border-4 border-white object-cover"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
       />
 
       {/* العنوان مع تأثير الكتابة */}
       <Motion.h1
-        className="mt-6 text-4xl font-bold"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        {displayedText}
-        <span className="animate-pulse">|</span>
-      </Motion.h1>
+  className="mt-8 text-3xl md:text-4xl font-bold text-blue-950 flex items-center"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+>
+  {displayedText}
+</Motion.h1>
 
-      {/* الوصف */}
-      <Motion.p
-        className="mt-3 text-lg text-gray-300"
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
-      >
-        I'm a <span className="font-semibold text-white">Graphic Designer</span>
-      </Motion.p>
+<Motion.p
+  className="mt-4 md:mt-6 text-base md:text-lg text-blue-800 max-w-2xl shadow-sm rounded-3xl p-1"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.8, duration: 0.8, ease: "easeOut" }}
+>
+  I'm a <span className="font-semibold text-blue-950">Graphic Designer</span>
+</Motion.p>
 
       {/* زرار */}
       <Motion.button
-        className="mt-6 px-6 py-3 bg-white text-[#0f172a] font-medium rounded-full 
-                  shadow-lg hover:bg-gray-200 transition-colors duration-300"
+        className="mt-6 md:mt-8 px-8 py-4 bg-blue-950 text-white font-semibold rounded-full 
+                  shadow-xl hover:bg-blue-900 transition-all duration-300"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 2.5, duration: 0.6, ease: "easeOut" }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.05, boxShadow: "0 8px 25px rgba(0,0,0,0.3)" }}
         whileTap={{ scale: 0.95 }}
       >
         <a href="#About-section">Know More</a>
