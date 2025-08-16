@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-indigo-50/70 shadow-md">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0f172a]/80 shadow-md">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-center">
 
         {/* Nav Items */}
@@ -41,12 +41,12 @@ export default function Navbar() {
             <Motion.li
               key={id}
               variants={itemVariants}
-              className="relative group text-indigo-950 text-lg font-semibold cursor-pointer 
-                        hover:text-indigo-800 transition-colors duration-300"
+              className="relative group text-white text-lg font-semibold cursor-pointer 
+                        hover:text-gray-300 transition-colors duration-300"
             >
               <a href={`#${id}`} className="relative">
                 {name}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-indigo-950 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
             </Motion.li>
           ))}

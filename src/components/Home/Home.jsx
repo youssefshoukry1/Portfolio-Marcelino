@@ -12,7 +12,7 @@ export default function Home() {
       setDisplayedText(fullText.slice(0, index))
       index++
       if (index > fullText.length) clearInterval(interval)
-    }, 80) // سرعة الكتابة (ملي ثانية لكل حرف)
+    }, 80)
 
     return () => clearInterval(interval)
   }, [])
@@ -21,7 +21,7 @@ export default function Home() {
     <section 
       id="Home-section" 
       className="min-h-screen flex flex-col justify-center items-center text-center 
-                  bg-gradient-to-b from-indigo-200 via-white to-indigo-100"
+                 bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#334155] text-white"
     >
       {/* صورة البروفايل */}
       <Motion.img
@@ -35,29 +35,29 @@ export default function Home() {
 
       {/* العنوان مع تأثير الكتابة */}
       <Motion.h1
-        className="mt-6 text-4xl font-bold text-indigo-950"
+        className="mt-6 text-4xl font-bold"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         {displayedText}
-        <span className="animate-pulse">|</span> {/* مؤشر الكتابة */}
+        <span className="animate-pulse">|</span>
       </Motion.h1>
 
       {/* الوصف */}
       <Motion.p
-        className="mt-3 text-lg text-gray-800"
+        className="mt-3 text-lg text-gray-300"
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
       >
-        I'm a <span className="font-semibold text-indigo-950">Graphic Designer</span>
+        I'm a <span className="font-semibold text-white">Graphic Designer</span>
       </Motion.p>
 
       {/* زرار */}
       <Motion.button
-        className="mt-6 px-6 py-3 bg-indigo-950 text-white font-medium rounded-full 
-                  shadow-lg hover:bg-indigo-900 transition-colors duration-300"
+        className="mt-6 px-6 py-3 bg-white text-[#0f172a] font-medium rounded-full 
+                  shadow-lg hover:bg-gray-200 transition-colors duration-300"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 2.5, duration: 0.6, ease: "easeOut" }}
