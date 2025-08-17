@@ -89,6 +89,7 @@ export default function Projects() {
                 viewport={{ once: false }}
               >
                 <img
+                loading='lazy'
                   src={item}
                   alt={`project-${index}`}
                   className="w-[200px] md:w-[260px] lg:w-[300px] h-[200px] md:h-[260px] lg:h-[300px] rounded-xl object-cover shadow-md hover:scale-105 transition-transform duration-500"
