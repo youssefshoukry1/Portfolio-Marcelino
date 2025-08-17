@@ -1,0 +1,150 @@
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { motion as Motion } from 'framer-motion'
+
+import img from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/1.jpg'
+import img2 from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/1st2.jpg'
+import img3 from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/2ST.jpg'
+import img4 from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/bahr.jpg'
+import img5 from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/BENZEMA W1.jpg'
+import img6 from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/ceazar.jpg'
+import img7 from '../../assets/Manpulation-20250817T100646Z-1-001/Manpulation/الجسر.jpg'
+
+import socialMediaImg from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/544_social_media_post_template.jpg'
+import socialMediaIm2 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Client Success Story.jpg'
+import socialMediaImg3 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice//Dream Home.jpg'
+import socialMediaImg4 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Exclusive Luxury Listings.jpg'
+import socialMediaImg5 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Explore Egypts.jpg'
+import socialMediaImg6 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Home Buying Tips.jpg'
+import socialMediaIm7 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/luxury living in Egypt.jpg'
+import socialMediaImg8 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice//Maps.jpg'
+import socialMediaImg9 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Real Estate Tips.jpg'
+import socialMediaImg10 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Rent Vs. Buy.jpg'
+import socialMediaImg11 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/searching for your new Home.jpg'
+import socialMediaImg12 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/v952-bb-032-a-01.jpg'
+import socialMediaImg13 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/v952-bb-032-a-02.jpg'
+import socialMediaImg14 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/v952-bb-032-a-03.jpg'
+import socialMediaImg15 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/v952-bb-032-a-04.jpg'
+import socialMediaImg16 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/v952-bb-032-a-05.jpg'
+import socialMediaImg17 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/vibrant communities.jpg'
+import socialMediaImg18 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Why Invest in Egypt.jpg'
+import socialMediaImg19 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/بين يديك1.jpg'
+import socialMediaImg20 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/حلمك يبدأمن هنا.jpg'
+import socialMediaImg21 from '../../assets/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/حول رؤيتك من الخيال الي الواقع.jpg'
+
+export default function Projects() {
+  const Manpulation = [img, img2, img3, img4, img5, img6, img7]
+  const socialMedia = [
+    socialMediaImg, socialMediaIm2, socialMediaImg3, socialMediaImg4, socialMediaImg5, socialMediaImg6, socialMediaIm7,
+    socialMediaImg8, socialMediaImg9, socialMediaImg10, socialMediaImg11, socialMediaImg12, socialMediaImg13, socialMediaImg14,
+    socialMediaImg15, socialMediaImg16, socialMediaImg17, socialMediaImg18, socialMediaImg19, socialMediaImg20, socialMediaImg21
+  ]
+
+  // Variants for fade-in
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  }
+
+  return (
+    <section id="Projects-section" className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 py-20 px-4">
+      
+      {/* Manipulation Section */}
+      <Motion.h1 
+        className="text-3xl md:text-4xl text-blue-950 text-center font-bold mb-12"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        Manipulation Projects
+      </Motion.h1>
+
+      <Motion.div
+        className="max-w-2xl mx-auto"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={25}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          loop={true}
+          className="rounded-2xl shadow-xl"
+        >
+          {Manpulation.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Motion.div 
+                className="flex justify-center items-center"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false }}
+              >
+                <img
+                  src={item}
+                  alt={`project-${index}`}
+                  className="w-[200px] md:w-[260px] lg:w-[300px] h-[200px] md:h-[260px] lg:h-[300px] rounded-xl object-cover shadow-md hover:scale-105 transition-transform duration-500"
+                />
+              </Motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Motion.div>
+
+      {/* Social Media Section */}
+      <Motion.h1 
+        className="text-3xl md:text-4xl text-blue-950 text-center font-bold mb-12 mt-20"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        Social Media Projects
+      </Motion.h1>
+
+      <Motion.div
+        className="max-w-3xl mx-auto"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={25}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          loop={true}
+          className="rounded-2xl shadow-xl"
+        >
+          {socialMedia.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Motion.div 
+                className="flex justify-center items-center"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false }}
+              >
+                <img
+                  src={item}
+                  alt={`project-${index}`}
+                  className="w-[220px] md:w-[300px] lg:w-[380px] h-[220px] md:h-[280px] lg:h-[320px] rounded-xl object-cover shadow-md hover:scale-105 transition-transform duration-500"
+                />
+              </Motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Motion.div>
+    </section>
+  )
+}

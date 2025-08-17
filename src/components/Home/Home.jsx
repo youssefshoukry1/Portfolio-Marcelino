@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { motion as Motion } from 'framer-motion';
 import img from '../../assets/img/IMG-20250814-WA0069.jpg'
+import About from '../../components//About/About';
+import Projects from '../Projects/Projects';
 
 export default function Home() {
   const fullText = "Hay, I'm Marcelino Hany"
@@ -18,6 +20,7 @@ export default function Home() {
   }, [])
 
   return (
+    <>
     <section 
       id="Home-section" 
       className="min-h-screen flex flex-col justify-center items-center text-center 
@@ -61,9 +64,20 @@ export default function Home() {
         transition={{ delay: 2.5, duration: 0.6, ease: "easeOut" }}
         whileHover={{ scale: 1.05, boxShadow: "0 8px 25px rgba(0,0,0,0.3)" }}
         whileTap={{ scale: 0.95 }}
+        onClick={() => {
+  const aboutSection = document.getElementById('About-section');
+  if (aboutSection) {
+    aboutSection.scrollIntoView({ behavior: "smooth" });
+  }
+}}
       >
-        <a href="#About-section">Know More</a>
+        Know More
       </Motion.button>
+      
     </section>
+    <About/>
+    <Projects/>
+    </>
   )
+  
 }
