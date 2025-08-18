@@ -67,32 +67,35 @@ export default function Projects() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={20}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop
-            breakpoints={{
-              320: { slidesPerView: 1 }, 
-              768: { slidesPerView: 2 }, 
-              1024: { slidesPerView: 3 } // برضو 3 صور على الكمبيوتر
-            }}
-            className="rounded-3xl shadow-2xl"
-          >
-            {socialMedia.map((item, index) => (
-              <SwiperSlide key={index} className="flex justify-center items-center">
-                <div className="bg-white p-3 rounded-2xl shadow-md flex justify-center items-center">
-                  <img
-                    src={encodeURI(item)}
-                    alt={`social-${index}`}
-                    className="w-[250px] md:w-[300px] lg:w-[320px] h-[250px] md:h-[300px] lg:h-[320px] rounded-xl object-cover hover:scale-105 transition-transform duration-500"
-                    decoding="async"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <Swiper
+  modules={[Pagination, Autoplay]}
+  spaceBetween={20}
+  pagination={{ 
+    clickable: true, 
+    dynamicBullets: true 
+  }}
+  autoplay={{ delay: 3000, disableOnInteraction: false }}
+  loop
+  breakpoints={{
+    320: { slidesPerView: 1 }, // Mobile
+    768: { slidesPerView: 2 }, // Tablet
+    1024: { slidesPerView: 3 } // Desktop = 3 صور
+  }}
+  className="rounded-3xl shadow-2xl"
+>
+  {socialMedia.map((item, index) => (
+    <SwiperSlide key={index} className="flex justify-center items-center">
+      <div className="bg-white p-3 rounded-2xl shadow-md flex justify-center items-center">
+        <img
+          src={encodeURI(item)}
+          alt={`social-${index}`}
+          className="w-[250px] md:w-[300px] lg:w-[320px] h-[250px] md:h-[300px] lg:h-[320px] rounded-xl object-cover hover:scale-105 transition-transform duration-500"
+          decoding="async"
+        />
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
         </Motion.div>
       </div>
 
@@ -119,7 +122,10 @@ export default function Projects() {
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={20}
-            pagination={{ clickable: true }}
+            pagination={{ 
+    clickable: true, 
+    dynamicBullets: true 
+  }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop
             breakpoints={{
