@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+
 import { motion as Motion } from 'framer-motion'
+// import './Projects.css'
 
 export default function Projects() {
   const Manpulation = [
@@ -47,7 +49,6 @@ export default function Projects() {
 
   return (
     <section id="Projects-section" className="w-full">
-
       {/* Social Media */}
       <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-blue-100 via-blue-50 to-white py-20 px-4">
         <Motion.h1
@@ -67,41 +68,37 @@ export default function Projects() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-        <Swiper
-  modules={[Pagination, Autoplay]}
-  spaceBetween={20}
-  pagination={{ 
-    clickable: true, 
-    dynamicBullets: true 
-  }}
-  autoplay={{ delay: 3000, disableOnInteraction: false }}
-  loop
-  breakpoints={{
-    320: { slidesPerView: 1 }, // Mobile
-    768: { slidesPerView: 2 }, // Tablet
-    1024: { slidesPerView: 3 } // Desktop = 3 صور
-  }}
-  className="rounded-3xl shadow-2xl"
->
-  {socialMedia.map((item, index) => (
-    <SwiperSlide key={index} className="flex justify-center items-center">
-      <div className="bg-white p-3 rounded-2xl shadow-md flex justify-center items-center">
-        <img
-          src={encodeURI(item)}
-          alt={`social-${index}`}
-          className="w-[250px] md:w-[300px] lg:w-[320px] h-[250px] md:h-[300px] lg:h-[320px] rounded-xl object-cover hover:scale-105 transition-transform duration-500"
-          decoding="async"
-        />
-      </div>
-    </SwiperSlide>
-  ))}
-</Swiper>
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            spaceBetween={20}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop
+            breakpoints={{
+              320: { slidesPerView: 1 }, // Mobile
+              768: { slidesPerView: 2 }, // Tablet
+              1024: { slidesPerView: 3 }, // Desktop
+            }}
+            className="rounded-3xl shadow-2xl"
+          >
+            {socialMedia.map((item, index) => (
+              <SwiperSlide key={index} className="flex justify-center items-center ">
+                <div className="bg-white p-3 rounded-2xl shadow-md flex justify-center items-center">
+                  <img
+                    src={encodeURI(item)}
+                    alt={`social-${index}`}
+                    className="w-[250px] md:w-[300px] lg:w-[320px] h-[250px] md:h-[300px] lg:h-[320px] rounded-xl object-cover hover:scale-105 transition-transform duration-500"
+                    decoding="async"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Motion.div>
       </div>
 
-
       {/* Manipulation */}
-      <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-white via-blue-50 to-blue-100 py-20 px-4">
+      <div className="  min-h-screen flex flex-col justify-center bg-gradient-to-b from-white via-blue-50 to-blue-100 py-20 px-4">
         <Motion.h1
           className="text-4xl md:text-5xl text-blue-950 text-center font-bold mb-12"
           variants={fadeInUp}
@@ -113,7 +110,7 @@ export default function Projects() {
         </Motion.h1>
 
         <Motion.div
-          className="max-w-6xl mx-auto w-full"
+          className="max-w-6xl mx-auto w-full "
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -122,18 +119,15 @@ export default function Projects() {
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={20}
-            pagination={{ 
-    clickable: true, 
-    dynamicBullets: true 
-  }}
+            pagination={{ clickable: true, dynamicBullets: true /* ,bulletClass: "my-bullet" */ }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop
             breakpoints={{
               320: { slidesPerView: 1 }, // Mobile
               768: { slidesPerView: 2 }, // Tablet
-              1024: { slidesPerView: 3 } // Desktop = 3 صور
+              1024: { slidesPerView: 3 }, // Desktop
             }}
-            className="rounded-3xl shadow-2xl"
+            className="  rounded-3xl shadow-2xl"
           >
             {Manpulation.map((item, index) => (
               <SwiperSlide key={index} className="flex justify-center items-center">

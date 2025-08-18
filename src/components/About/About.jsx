@@ -4,18 +4,18 @@ import { motion as Motion } from 'framer-motion';
 export default function About() {
 
   const cards = [
-    [
-      "I am a Social Media Graphic Designer",
-      "with hands-on experience creating content for various platforms."
-    ],
-    [
-      "I have an intermediate level in video editing and motion graphics,",
-      "and I am proficient in Adobe Photoshop and Illustrator."
-    ],
-    [
-      "I have solid experience with Adobe After Effects, Premiere Pro, and XD,",
-      "and I am confident in using these tools to bring creative projects to life."
-    ]
+    {
+      title: "Graphic Designer",
+      text: "I am a Social Media Graphic Designer with hands-on experience creating content for various platforms."
+    },
+    {
+      title: "Motion & Editing",
+      text: "I have an intermediate level in video editing and motion graphics, and I am proficient in Adobe Photoshop and Illustrator."
+    },
+    {
+      title: "Creative Tools",
+      text: "I have solid experience with Adobe After Effects, Premiere Pro, and XD, and I am confident in using these tools to bring creative projects to life."
+    }
   ];
 
   const containerVariants = {
@@ -24,46 +24,55 @@ export default function About() {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+    hidden: { opacity: 0, scale: 0.9, y: 40 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
   return (
     <section 
       id="About-section" 
-      className="min-h-screen flex flex-col justify-center items-center text-center 
-      bg-gradient-to-b from-white via-blue-50 to-blue-100 px-6 py-12"
+      className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative"
+      style={{ backgroundImage: "url('/blue-bg/blue.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
-      <Motion.h2 
-        className="text-3xl md:text-4xl font-semibold text-blue-950 mb-12"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        About Me
-      </Motion.h2>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
-      <Motion.div 
-        className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-stretch"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-      >
-        {cards.map((paragraphs, index) => (
-          <Motion.div 
-            key={index} 
-            className="w-full md:w-80 p-6 bg-white rounded-xl shadow-md hover:shadow-xl 
-            transition-shadow duration-300 border-l-4 border-blue-900 text-left"
-            variants={cardVariants}
-          >
-            {paragraphs.map((line, i) => (
-              <p key={i} className="text-gray-900 text-base md:text-lg leading-relaxed mb-3">
-                {line}
+      <div className="relative z-10 w-full max-w-6xl">
+        <Motion.h2 
+          className="text-4xl md:text-5xl font-bold text-white mb-16 drop-shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          About Me
+        </Motion.h2>
+
+        <Motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+        >
+          {cards.map((card, index) => (
+            <Motion.div 
+              key={index} 
+              className="p-8 rounded-2xl bg-gradient-to-br from-white/30 to-white/10 
+              backdrop-blur-lg border border-white/30 shadow-lg 
+              hover:shadow-[0_0_30px_rgba(0,150,255,0.4)] 
+              hover:-translate-y-3 hover:rotate-1 transition-all duration-500 ease-out"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
+            >
+              <h3 className="text-2xl font-semibold text-white mb-4 drop-shadow-md">
+                {card.title}
+              </h3>
+              <p className="text-white/90 text-lg leading-relaxed">
+                {card.text}
               </p>
-            ))}
-          </Motion.div>
-        ))}
-      </Motion.div>
+            </Motion.div>
+          ))}
+        </Motion.div>
+      </div>
     </section>
   )
 }
