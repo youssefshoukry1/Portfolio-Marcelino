@@ -36,6 +36,8 @@ export default function Projects() {
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/v952-bb-032-a-05.webp",
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/vibrant communities.webp",
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Why Invest in Egypt.webp",
+    "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Untitled-1.webp",
+    "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/Juice.webp",
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/بين يديك1.webp",
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/حلمك يبدأمن هنا.webp",
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/حول رؤيتك من الخيال الي الواقع.webp"

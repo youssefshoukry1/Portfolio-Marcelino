@@ -34,7 +34,7 @@ export default function Home() {
         <div className="relative z-10 flex flex-col items-center">
           {/* العنوان مع تأثير الكتابة */}
           <Motion.h1
-            className="mt-8 text-3xl md:text-4xl font-bold text-transparent bg-clip-text 
+            className="mt-8 text-2xl md:text-4xl font-bold text-transparent bg-clip-text 
                        bg-gradient-to-r from-cyan-200 via-blue-300 to-indigo-400 drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -54,8 +54,8 @@ export default function Home() {
 
           {/* زرار */}
           <Motion.button
-            className="mt-6 md:mt-8 px-8 py-4 bg-cyan-600 text-white font-semibold rounded-full 
-                      shadow-xl hover:bg-cyan-500 transition-all duration-300"
+            className="mt-6 md:mt-8 px-8 py-4 bg-cyan-900 text-white font-semibold rounded-full 
+                      shadow-xl hover:bg-cyan-700 transition-all duration-300"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 2.5, duration: 0.6, ease: "easeOut" }}
