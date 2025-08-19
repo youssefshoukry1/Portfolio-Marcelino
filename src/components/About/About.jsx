@@ -31,15 +31,18 @@ export default function About() {
   return (
     <section 
       id="About-section" 
-      className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative"
-      style={{ backgroundImage: "url('/img2/close-up.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
+      className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative 
+                 bg-gradient-to-br from-[#071034] via-[#0f172a] to-[#0f637a] overflow-hidden"
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+      {/* Blur Layer */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
 
+      {/* محتوى */}
       <div className="relative z-10 w-full max-w-6xl">
         <Motion.h2 
-          className="text-4xl md:text-5xl font-bold text-white mb-16 drop-shadow-lg"
+          className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text 
+          bg-gradient-to-r from-cyan-200 via-blue-300 to-indigo-400 
+          mb-16 drop-shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -56,10 +59,11 @@ export default function About() {
           {cards.map((card, index) => (
             <Motion.div 
               key={index} 
-              className="p-8 rounded-2xl bg-gradient-to-br from-white/30 to-white/10 
-              backdrop-blur-lg border border-white/30 shadow-lg 
-              hover:shadow-[0_0_30px_rgba(0,150,255,0.4)] 
-              hover:-translate-y-3 hover:rotate-1 transition-all duration-500 ease-out"
+              className="p-8 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 
+                         backdrop-blur-lg border border-white/20 shadow-lg 
+                         hover:shadow-[0_0_35px_rgba(0,200,255,0.4)] 
+                         hover:-translate-y-3 hover:rotate-1 
+                         transition-all duration-500 ease-out"
               variants={cardVariants}
               whileHover={{ scale: 1.05 }}
             >

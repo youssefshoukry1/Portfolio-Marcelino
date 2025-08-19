@@ -1,120 +1,81 @@
-import React from "react";
-import { motion as Motion } from "framer-motion";
+import React, { useState, useEffect } from 'react'
+import { motion as Motion } from 'framer-motion';
 
-export default function Contact() {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
-    }),
-  };
+import About from '../../components/About/About';
+import Projects from '../Projects/Projects';
+import Contact from '../Contact/Contact';
 
-  const email = "";
-  const whatsappNumber = "+";
+export default function Home() {
+  const fullText = "Hay, I'm Marcelino Hany"
+  const [displayedText, setDisplayedText] = useState("")
+
+  useEffect(() => {
+    let index = 4
+    const interval = setInterval(() => {
+      setDisplayedText(fullText.slice(0, index))
+      index++
+      if (index > fullText.length) clearInterval(interval)
+    }, 80)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <section
-      id="contact-section"
-      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 md:px-6 overflow-hidden"
-      style={{
-        backgroundImage: "url('/img2/grdiant.webp')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* overlay */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
+    <>
+      <section
+        id="Home-section"
+        className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 
+                   bg-gradient-to-br from-[#071034] via-[#0f172a] to-[#0f637a] overflow-hidden"
+      >
+        {/* Layer شفاف مع بلور */}
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
 
-      {/* content */}
-      <div className="relative z-10 flex flex-col items-center gap-6 w-full max-w-2xl">
-
-        {/* title */}
-        <Motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-center drop-shadow-lg"
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          Let's <span className="text-yellow-300">Connect</span>
-        </Motion.h1>
-
-        {/* description */}
-        <Motion.p
-          className="text-white/90 text-center text-base sm:text-lg md:text-xl"
-          variants={fadeIn}
-          custom={0.2}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          Have a project in mind or just want to say hi? Reach out!
-        </Motion.p>
-
-        {/* buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 w-full justify-center">
-          <Motion.a
-            href={`https://wa.me/${whatsappNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex justify-center items-center w-full sm:w-auto px-5 py-2 sm:px-6 sm:py-3 bg-green-500/50 text-white border-2 border-green-400 rounded-lg shadow-md hover:scale-105 hover:bg-green-500/70 transition-transform duration-300 text-sm sm:text-base"
-            variants={fadeIn}
-            custom={0.4}
+        {/* المحتوى */}
+        <div className="relative z-10 flex flex-col items-center">
+          {/* العنوان مع تأثير الكتابة */}
+          <Motion.h1
+            className="mt-8 text-3xl md:text-4xl font-bold text-transparent bg-clip-text 
+                       bg-gradient-to-r from-cyan-200 via-blue-300 to-indigo-400 drop-shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
           >
-            💬 WhatsApp
-          </Motion.a>
+            {displayedText}
+          </Motion.h1>
 
-          <Motion.a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex justify-center items-center w-full sm:w-auto px-5 py-2 sm:px-6 sm:py-3 bg-blue-500/50 text-white border-2 border-blue-400 rounded-lg shadow-md hover:scale-105 hover:bg-blue-500/70 transition-transform duration-300 text-sm sm:text-base"
-            variants={fadeIn}
-            custom={0.6}
+          <Motion.p
+            className="mt-4 md:mt-6 text-base md:text-lg text-gray-200 max-w-2xl shadow-sm rounded-3xl p-1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.8, duration: 0.8, ease: "easeOut" }}
           >
-            🔗 LinkedIn
-          </Motion.a>
-        </div>
+            I'm a <span className="font-semibold text-blue-300">Graphic Designer</span>
+          </Motion.p>
 
-        {/* form */}
-        <Motion.form
-          action={`mailto:${email}`}
-          method="POST"
-          encType="text/plain"
-          className="w-full bg-white/10 backdrop-blur-md border-2 border-white/30 rounded-lg p-4 sm:p-5 flex flex-col gap-3 shadow-md"
-          variants={fadeIn}
-          custom={0.8}
-        >
-          <Motion.input
-            type="email"
-            name="Email"
-            placeholder="Your Email"
-            required
-            className="w-full p-2 sm:p-3 rounded-lg bg-white/20 text-white placeholder-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            variants={fadeIn}
-            custom={0.9}
-          />
-          <Motion.textarea
-            name="Message"
-            placeholder="Your Message"
-            rows="4"
-            required
-            className="w-full p-2 sm:p-3 rounded-lg bg-white/20 text-white placeholder-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            variants={fadeIn}
-            custom={1.0}
-          />
+          {/* زرار */}
           <Motion.button
-            type="submit"
-            className="w-full py-2 sm:py-3 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white font-semibold rounded-lg shadow-md hover:scale-105 hover:brightness-110 transition-transform duration-300 text-sm sm:text-base"
-            variants={fadeIn}
-            custom={1.1}
+            className="mt-6 md:mt-8 px-8 py-4 bg-cyan-600 text-white font-semibold rounded-full 
+                       shadow-xl hover:bg-cyan-500 transition-all duration-300"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 2.5, duration: 0.6, ease: "easeOut" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 25px rgba(0,0,0,0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const aboutSection = document.getElementById('About-section');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
-            Send Message
+            Know More
           </Motion.button>
-        </Motion.form>
-      </div>
-    </section>
-  );
+        </div>
+      </section>
+
+      <About />
+      <Projects />
+      <Contact />
+    </>
+  )
 }
