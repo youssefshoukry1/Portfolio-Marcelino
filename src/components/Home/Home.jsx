@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { motion as Motion } from 'framer-motion';
-import img from '../../assets/img/IMG-20250814-WA0069.jpg'
 import About from '../../components//About/About';
 import Projects from '../Projects/Projects';
-
+import '../../../public/marcin.webp'
+import Contact from '../Contact/Contact';
 export default function Home() {
   const fullText = "Hay, I'm Marcelino Hany"
   const [displayedText, setDisplayedText] = useState("")
@@ -25,16 +25,16 @@ export default function Home() {
       id="Home-section" 
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 
                 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/img2/abstract-luxury.jpg')" ,backgroundSize: 'cover' }}
+      style={{ backgroundImage: "url('/img2/abstract-luxury.webp')" ,backgroundSize: 'cover' }}
     >
       {/* Layer شفاف عشان يغمق الخلفية ويظهر الكلام */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* المحتوى فوق الخلفية */}
       <div className="relative z-10 flex flex-col items-center">
         {/* صورة البروفايل */}
         <Motion.img
-          src={img}
+          src='/marcin.webp'
           alt="Profile"
           className="w-48 h-48 md:w-56 md:h-56 rounded-full shadow-2xl border-4 border-white object-cover"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -84,6 +84,7 @@ export default function Home() {
 
     <About/>
     <Projects/>
+    <Contact/>
     </>
   )
 }

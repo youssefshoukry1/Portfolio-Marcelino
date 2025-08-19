@@ -32,7 +32,7 @@ export default function About() {
     <section 
       id="About-section" 
       className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative"
-      style={{ backgroundImage: "url('/blue-bg/blue.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{ backgroundImage: "url('/img2/close-up.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>

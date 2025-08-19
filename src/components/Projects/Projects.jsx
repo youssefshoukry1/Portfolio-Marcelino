@@ -5,10 +5,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { motion as Motion } from 'framer-motion'
-// import './Projects.css'
 
 export default function Projects() {
-  const Manpulation = [
+  const manipulation = [
     "/Manpulation-20250817T100646Z-1-001/Manpulation/1.webp",
     "/Manpulation-20250817T100646Z-1-001/Manpulation/1st2.webp",
     "/Manpulation-20250817T100646Z-1-001/Manpulation/2ST.webp",
@@ -47,18 +46,24 @@ export default function Projects() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   }
 
-  return (
-    <section id="Projects-section" className="w-full">
-      {/* Social Media */}
-      <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-blue-100 via-blue-50 to-white py-20 px-4">
+  const Section = ({ title, items, bgImage }) => (
+    <div
+      className="relative min-h-screen flex flex-col justify-center items-center px-4 md:px-6 py-16 md:py-20 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      {/* Layer */} 
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+      {/* المحتوى */}
+      <div className="relative z-10 w-full flex flex-col items-center">
         <Motion.h1
-          className="text-4xl md:text-5xl text-blue-950 text-center font-bold mb-12"
+          className="text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 font-extrabold mb-10 md:mb-12 drop-shadow-lg text-center"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          Social Media Projects
+          {title}
         </Motion.h1>
 
         <Motion.div
@@ -68,82 +73,56 @@ export default function Projects() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={20}
-            pagination={{ clickable: true, dynamicBullets: true }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop
-            breakpoints={{
-              320: { slidesPerView: 1 }, // Mobile
-              768: { slidesPerView: 2 }, // Tablet
-              1024: { slidesPerView: 3 }, // Desktop
-            }}
-            className="rounded-3xl shadow-2xl"
-          >
-            {socialMedia.map((item, index) => (
-              <SwiperSlide key={index} className="flex justify-center items-center ">
-                <div className="bg-white p-3 rounded-2xl shadow-md flex justify-center items-center">
-                  <img
-                    src={encodeURI(item)}
-                    alt={`social-${index}`}
-                    className="w-[250px] md:w-[300px] lg:w-[320px] h-[250px] md:h-[300px] lg:h-[320px] rounded-xl object-cover hover:scale-105 transition-transform duration-500"
-                    decoding="async"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+       <Swiper
+  modules={[Pagination, Autoplay]}
+  spaceBetween={10} // قللتها للموبايل
+  pagination={{ clickable: true, dynamicBullets: true }}
+  autoplay={{ delay: 2500, disableOnInteraction: false }}
+  loop
+  breakpoints={{
+    320: { slidesPerView: 1 },   // موبايل
+    640: { slidesPerView: 2 },   // تابلت
+    1024: { slidesPerView: 3 },  // لابتوب
+  }}
+  className="rounded-3xl shadow-2xl"
+>
+  {items.map((item, index) => (
+    <SwiperSlide 
+      key={index} 
+      className="flex justify-center items-center"
+    >
+<img
+  src={encodeURI(item)}
+  alt={`${title}-${index}`}
+  className="w-[270px] sm:w-[260px] md:w-[300px] lg:w-[320px] 
+             h-[270px] sm:h-[260px] md:h-[300px] lg:h-[320px] 
+             rounded-2xl shadow-lg hover:scale-105 
+             transition-transform duration-500 object-cover mx-auto"
+  decoding="async"
+/>
+
+
+    </SwiperSlide>
+  ))}
+</Swiper>
+
         </Motion.div>
       </div>
+    </div>
+  )
 
-      {/* Manipulation */}
-      <div className="  min-h-screen flex flex-col justify-center bg-gradient-to-b from-white via-blue-50 to-blue-100 py-20 px-4">
-        <Motion.h1
-          className="text-4xl md:text-5xl text-blue-950 text-center font-bold mb-12"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          Manipulation Projects
-        </Motion.h1>
-
-        <Motion.div
-          className="max-w-6xl mx-auto w-full "
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={20}
-            pagination={{ clickable: true, dynamicBullets: true /* ,bulletClass: "my-bullet" */ }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop
-            breakpoints={{
-              320: { slidesPerView: 1 }, // Mobile
-              768: { slidesPerView: 2 }, // Tablet
-              1024: { slidesPerView: 3 }, // Desktop
-            }}
-            className="  rounded-3xl shadow-2xl"
-          >
-            {Manpulation.map((item, index) => (
-              <SwiperSlide key={index} className="flex justify-center items-center">
-                <div className="bg-white p-3 rounded-2xl shadow-md flex justify-center items-center">
-                  <img
-                    src={encodeURI(item)}
-                    alt={`project-${index}`}
-                    className="w-[250px] md:w-[300px] lg:w-[320px] h-[250px] md:h-[300px] lg:h-[320px] rounded-xl object-cover hover:scale-105 transition-transform duration-500"
-                    decoding="async"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </Motion.div>
-      </div>
+  return (
+    <section id="Projects-section" className="w-full">
+      <Section 
+        title="Social Media Projects" 
+        items={socialMedia} 
+        bgImage="/img2/grdiant.webp" 
+      />
+      <Section 
+        title="Manipulation Projects" 
+        items={manipulation} 
+        bgImage="/img2/pexels-manuel.webp" 
+      />
     </section>
   )
 }
