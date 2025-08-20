@@ -11,8 +11,8 @@ export default function Footer() {
 
   return (
     <Motion.footer
-      className="w-full py-3 bg-gradient-to-r from-cyan-950 via-blue-950 to-indigo-950 
-      text-white flex justify-center items-center px-2 shadow-md"
+      className="w-full py-3 bg-gradient-to-t from-[#0b1f29] via-[#0d2c38] to-[#103846]
+      text-gray-200 flex justify-center items-center px-2 shadow-lg"
       variants={fadeIn}
       initial="hidden"
       whileInView="visible"
@@ -22,9 +22,10 @@ export default function Footer() {
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex flex-wrap justify-center items-center gap-1 text-xs sm:text-sm font-medium hover:scale-105 transition-transform duration-300"
+        className="flex flex-wrap justify-center items-center gap-1 text-xs sm:text-sm font-medium 
+                   hover:text-cyan-400 hover:scale-105 transition-all duration-300"
       >
-        Developed by <span className="text-yellow-300 ml-1">Youssef Shoukry</span> | 💬 01204470794
+        Developed by <span className="text-cyan-300 ml-1">Youssef Shoukry</span> | 💬 01204470794
       </a>
     </Motion.footer>
   );

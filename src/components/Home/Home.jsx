@@ -23,12 +23,13 @@ export default function Home() {
   return (
     <>
       <section
-        id="Home-section"
-        className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 
-                  bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#0e7490] overflow-hidden"
-      >
-        {/* Blur Layer */}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
+  id="Home-section"
+  className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 
+             overflow-hidden bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/img2/pexels-manuel.webp')" }}
+>
+  {/* Blur Layer */}
+  <div className="absolute inset-0 bg-black/85 backdrop-blur-md"></div>
 
         {/* المحتوى */}
         <div className="relative z-10 flex flex-col items-center">

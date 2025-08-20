@@ -11,115 +11,131 @@ export default function Contact() {
     }),
   };
 
-  const email = "";
-  const whatsappNumber = "+";
+  const email = "your-email@example.com";
+  const whatsappNumber = "201234567890";
+  const linkedinLink = "https://www.linkedin.com/in/yourprofile/";
 
   return (
-    <section
-      id="contact-section"
-      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 md:px-6 overflow-hidden 
-      bg-gradient-to-b from-[#0f172a] via-[#1e1b4b] to-[#1e3a8a]"
-    >
-      {/* overlay */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+   <section
+  id="Contact-section"
+  className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 py-20 
+             bg-[#0a1128] overflow-hidden"
+>
+  {/* glowing circles for effect */}
+  <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-indigo-500/20 rounded-full blur-3xl"></div>
 
-      {/* content */}
-      <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-2xl">
-        {/* title */}
-        <Motion.h1
-          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text 
-          bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400 text-center drop-shadow-lg"
+  {/* overlay subtle gradient */}
+  <div className="absolute inset-0 bg-gradient-to-tr from-[#071427]/80 via-[#0a192f]/70 to-[#0f637a]/60"></div>
+
+  {/* content */}
+  <div className="relative z-10 w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+    {/* left side */}
+    <div className="flex flex-col items-start justify-center gap-8">
+      <Motion.h2
+        className="text-4xl md:text-6xl font-extrabold 
+                   bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400
+                   bg-clip-text text-transparent drop-shadow-lg"
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        Let’s <span className="text-cyan-300">Connect</span>
+      </Motion.h2>
+
+      <Motion.p
+        className="text-lg md:text-xl text-gray-200 leading-relaxed"
+        variants={fadeIn}
+        custom={0.2}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        Reach out anytime
+      </Motion.p>
+
+      {/* buttons */}
+      <div className="flex flex-wrap gap-6">
+        <Motion.a
+          href={`https://wa.me/${whatsappNumber}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-7 py-3 rounded-2xl font-semibold text-white 
+                     bg-gradient-to-r from-emerald-400 to-green-600
+                     shadow-lg hover:shadow-emerald-400/40 hover:scale-105
+                     transition-transform duration-300"
           variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          custom={0.4}
         >
-          Let's <span className="text-yellow-300">Connect</span>
-        </Motion.h1>
+          💬 WhatsApp
+        </Motion.a>
 
-        {/* description */}
-        <Motion.p
-          className="text-white/90 text-center text-lg md:text-xl max-w-lg"
+        <Motion.a
+          href={linkedinLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-7 py-3 rounded-2xl font-semibold text-white 
+                     bg-gradient-to-r from-sky-500 to-blue-700
+                     shadow-lg hover:shadow-sky-400/40 hover:scale-105
+                     transition-transform duration-300"
           variants={fadeIn}
-          custom={0.2}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          custom={0.6}
         >
-          Have a project in mind or just want to say hi? Reach out and let’s talk.
-        </Motion.p>
-
-        {/* buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-          <Motion.a
-            href={`https://wa.me/${whatsappNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex justify-center items-center px-6 py-3 
-            bg-green-500/80 text-white font-medium border border-green-400 rounded-2xl shadow-md 
-            hover:scale-105 hover:bg-green-500 transition-transform duration-300 text-base"
-            variants={fadeIn}
-            custom={0.4}
-          >
-            💬 WhatsApp
-          </Motion.a>
-
-          <Motion.a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex justify-center items-center px-6 py-3 
-            bg-blue-600/80 text-white font-medium border border-blue-400 rounded-2xl shadow-md 
-            hover:scale-105 hover:bg-blue-600 transition-transform duration-300 text-base"
-            variants={fadeIn}
-            custom={0.6}
-          >
-            🔗 LinkedIn
-          </Motion.a>
-        </div>
-
-        {/* form */}
-        <Motion.form
-          action={`mailto:${email}`}
-          method="POST"
-          encType="text/plain"
-          className="w-full bg-white/10 backdrop-blur-md border border-white/20 
-          rounded-2xl p-6 flex flex-col gap-4 shadow-lg"
-          variants={fadeIn}
-          custom={0.8}
-        >
-          <Motion.input
-            type="email"
-            name="Email"
-            placeholder="Your Email"
-            required
-            className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-white/70 
-            text-base focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            variants={fadeIn}
-            custom={0.9}
-          />
-          <Motion.textarea
-            name="Message"
-            placeholder="Your Message"
-            rows="5"
-            required
-            className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-white/70 
-            text-base focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            variants={fadeIn}
-            custom={1.0}
-          />
-          <Motion.button
-            type="submit"
-            className="w-full py-3 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 
-            text-white font-semibold rounded-xl shadow-md hover:scale-105 hover:brightness-110 
-            transition-transform duration-300 text-base"
-            variants={fadeIn}
-            custom={1.1}
-          >
-            Send Message
-          </Motion.button>
-        </Motion.form>
+          🔗 LinkedIn
+        </Motion.a>
       </div>
-    </section>
+    </div>
+
+    {/* right side (form) */}
+    <Motion.form
+      action={`mailto:${email}`}
+      method="POST"
+      encType="text/plain"
+      className="w-full bg-white/10 backdrop-blur-lg border border-white/20 
+                 rounded-3xl p-10 flex flex-col gap-6 shadow-2xl"
+      variants={fadeIn}
+      custom={0.8}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <input
+        type="text"
+        name="Name"
+        placeholder="Your Name"
+        required
+        className="w-full p-4 md:p-5 rounded-xl bg-white/15 text-white placeholder-white/70 
+                   text-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      />
+      <input
+        type="email"
+        name="Email"
+        placeholder="Your Email"
+        required
+        className="w-full p-4 md:p-5 rounded-xl bg-white/15 text-white placeholder-white/70 
+                   text-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      />
+      <textarea
+        name="Message"
+        placeholder="Your Message"
+        rows="6"
+        required
+        className="w-full p-4 md:p-5 rounded-xl bg-white/15 text-white placeholder-white/70 
+                   text-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      />
+      <button
+        type="submit"
+        className="w-full py-4 md:py-5 text-lg font-semibold text-white rounded-xl
+                   bg-gradient-to-r from-cyan-400 via-sky-500 to-indigo-600
+                   shadow-lg hover:scale-105 hover:shadow-cyan-300/40 
+                   transition-transform duration-300"
+      >
+        🚀 Send Message
+      </button>
+    </Motion.form>
+  </div>
+</section>
+
   );
 }

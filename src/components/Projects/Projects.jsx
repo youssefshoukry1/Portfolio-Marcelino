@@ -71,36 +71,38 @@ const Section = ({ title, items, bgImage }) => (
       </Motion.h1>
 
       <Motion.div
-        className="max-w-6xl mx-auto w-full"
+        className=" max-w-[1400px] mx-auto w-full"
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          spaceBetween={10}
-          pagination={{ clickable: true, dynamicBullets: true }}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          loop
-          breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="rounded-3xl shadow-2xl"
-        >
+<Swiper
+  modules={[Pagination, Autoplay]}
+  spaceBetween={10}
+  pagination={{ clickable: true, dynamicBullets: true }}
+  autoplay={{ delay: 2500, disableOnInteraction: false }}
+  loop
+  breakpoints={{
+    320: { slidesPerView: 1, },
+    640: { slidesPerView: 2,},
+    1024: { slidesPerView: 3, },
+  }}
+  className="rounded-3xl shadow-2xl "
+>
+
           {items.map((item, index) => (
             <SwiperSlide key={index} className="flex justify-center items-center">
-              <img
-                src={encodeURI(item)}
-                alt={`${title}-${index}`}
-                className="w-[270px] sm:w-[260px] md:w-[300px] lg:w-[320px] 
-                h-[270px] sm:h-[260px] md:h-[300px] lg:h-[320px] 
-                rounded-2xl shadow-lg hover:scale-105 
-                transition-transform duration-500 object-cover mx-auto"
-                decoding="async"
-              />
+            <img
+  src={encodeURI(item)}
+  alt={`${title}-${index}`}
+  className="w-[270px] sm:w-[260px] md:w-[350px] lg:w-[400px] 
+  h-[270px] sm:h-[260px] md:h-[350px] lg:h-[400px] 
+  rounded-2xl shadow-lg hover:scale-105 
+  transition-transform duration-500 object-cover mx-auto"
+  decoding="async"
+/>
+
             </SwiperSlide>
           ))}
         </Swiper>
@@ -118,7 +120,7 @@ const Section = ({ title, items, bgImage }) => (
       <Section 
         title="Manipulation Projects" 
         items={manipulation} 
-        bgImage="/img2/pexels-manuel.webp" 
+        bgImage="" 
       />
     </section>
   )
