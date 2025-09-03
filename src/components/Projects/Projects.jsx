@@ -5,7 +5,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { motion as Motion } from 'framer-motion'
-import LazyLoad from "react-lazyload"
+import { InView } from 'react-intersection-observer'
 
 export default function Projects() {
   const manipulation = [
@@ -43,7 +43,6 @@ export default function Projects() {
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/حلمك يبدأمن هنا.webp",
     "/Social Media-20250817T100653Z-1-001/Social Media/REMAX 1st Choice/حول رؤيتك من الخيال الي الواقع.webp"
   ]
-
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -94,43 +93,37 @@ export default function Projects() {
           >
             {items.map((item, index) => (
               <SwiperSlide key={index} className="flex justify-center items-center">
-                <LazyLoad
-                  height={300}
-                  offset={100}
-                  placeholder={
-                    <div className="w-[270px] h-[270px] sm:w-[260px] sm:h-[260px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] bg-gray-300 animate-pulse rounded-2xl" />
-                  }
-                >
-                  <img
-                    src={encodeURI(item)}
-                    alt={`${title}-${index}`}
-                    className="w-[270px] sm:w-[260px] md:w-[350px] lg:w-[400px] 
-                               h-[270px] sm:h-[260px] md:h-[350px] lg:h-[400px] 
-                               rounded-2xl shadow-lg hover:scale-105 
-                               transition-transform duration-500 object-cover mx-auto"
-                    decoding="async"
-                  />
-                </LazyLoad>
+                <InView triggerOnce threshold={0.2}>
+                  {({ inView, ref }) => (
+                    <div ref={ref} className="flex justify-center items-center">
+                      {inView ? (
+                        <img
+                          src={encodeURI(item)}
+                          alt={`${title}-${index}`}
+                          className="w-[270px] sm:w-[260px] md:w-[350px] lg:w-[400px] 
+                                     h-[270px] sm:h-[260px] md:h-[350px] lg:h-[400px] 
+                                     rounded-2xl shadow-lg hover:scale-105 
+                                     transition-transform duration-500 object-cover mx-auto"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div className="w-[270px] h-[270px] sm:w-[260px] sm:h-[260px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] bg-gray-300 animate-pulse rounded-2xl" />
+                      )}
+                    </div>
+                  )}
+                </InView>
               </SwiperSlide>
             ))}
           </Swiper>
         </Motion.div>
       </div>
     </div>
-  );
+  )
 
   return (
     <section id="Projects-section" className="w-full">
-      <Section 
-        title="Social Media Projects" 
-        items={socialMedia} 
-        bgImage="" 
-      />
-      <Section 
-        title="Manipulation Projects" 
-        items={manipulation} 
-        bgImage="" 
-      />
+      <Section title="Social Media Projects" items={socialMedia} bgImage="" />
+      <Section title="Manipulation Projects" items={manipulation} bgImage="" />
     </section>
   )
 }
