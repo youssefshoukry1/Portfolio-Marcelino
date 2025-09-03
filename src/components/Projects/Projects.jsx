@@ -94,6 +94,7 @@ const Section = ({ title, items, bgImage }) => (
           {items.map((item, index) => (
             <SwiperSlide key={index} className="flex justify-center items-center">
             <img
+            loading='lazy'
   src={encodeURI(item)}
   alt={`${title}-${index}`}
   className="w-[270px] sm:w-[260px] md:w-[350px] lg:w-[400px] 
