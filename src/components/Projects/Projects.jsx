@@ -5,6 +5,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import { motion as Motion } from 'framer-motion'
+import LazyLoad from "react-lazyload"
 
 export default function Projects() {
   const manipulation = [
@@ -47,70 +48,77 @@ export default function Projects() {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   }
-const Section = ({ title, items, bgImage }) => (
-  <div
-    className={`relative min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 py-16 md:py-20 
-      ${bgImage ? "bg-cover bg-center bg-no-repeat" : "bg-gradient-to-br from-[#1b2963] via-[#1e2e55] to-[#1fa9cf] overflow-hidden"}`}
-    style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
-  >
-    {/* Blur Layer */}
-    <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
 
-    {/* المحتوى */}
-    <div className="relative z-10 w-full flex flex-col items-center">
-      <Motion.h1
-        className="text-3xl md:text-5xl text-transparent bg-clip-text 
-                   bg-gradient-to-r from-cyan-200 via-blue-300 to-indigo-400 
-                   font-extrabold mb-10 md:mb-12 drop-shadow-lg text-center"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        {title}
-      </Motion.h1>
+  const Section = ({ title, items, bgImage }) => (
+    <div
+      className={`relative min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6 py-16 md:py-20 
+        ${bgImage ? "bg-cover bg-center bg-no-repeat" : "bg-gradient-to-br from-[#1b2963] via-[#1e2e55] to-[#1fa9cf] overflow-hidden"}`}
+      style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
+    >
+      {/* Blur Layer */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-md"></div>
 
-      <Motion.div
-        className=" max-w-[1400px] mx-auto w-full"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-<Swiper
-  modules={[Pagination, Autoplay]}
-  spaceBetween={10}
-  pagination={{ clickable: true, dynamicBullets: true }}
-  autoplay={{ delay: 2500, disableOnInteraction: false }}
-  loop
-  breakpoints={{
-    320: { slidesPerView: 1, },
-    640: { slidesPerView: 2,},
-    1024: { slidesPerView: 3, },
-  }}
-  className="rounded-3xl shadow-2xl "
->
+      {/* المحتوى */}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        <Motion.h1
+          className="text-3xl md:text-5xl text-transparent bg-clip-text 
+                     bg-gradient-to-r from-cyan-200 via-blue-300 to-indigo-400 
+                     font-extrabold mb-10 md:mb-12 drop-shadow-lg text-center"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {title}
+        </Motion.h1>
 
-          {items.map((item, index) => (
-            <SwiperSlide key={index} className="flex justify-center items-center">
-            <img
-            loading='lazy'
-  src={encodeURI(item)}
-  alt={`${title}-${index}`}
-  className="w-[270px] sm:w-[260px] md:w-[350px] lg:w-[400px] 
-  h-[270px] sm:h-[260px] md:h-[350px] lg:h-[400px] 
-  rounded-2xl shadow-lg hover:scale-105 
-  transition-transform duration-500 object-cover mx-auto"
-  decoding="async"
-/>
-
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Motion.div>
+        <Motion.div
+          className=" max-w-[1400px] mx-auto w-full"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            spaceBetween={10}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            loop
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="rounded-3xl shadow-2xl "
+          >
+            {items.map((item, index) => (
+              <SwiperSlide key={index} className="flex justify-center items-center">
+                <LazyLoad
+                  height={300}
+                  offset={100}
+                  placeholder={
+                    <div className="w-[270px] h-[270px] sm:w-[260px] sm:h-[260px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] bg-gray-300 animate-pulse rounded-2xl" />
+                  }
+                >
+                  <img
+                    src={encodeURI(item)}
+                    alt={`${title}-${index}`}
+                    className="w-[270px] sm:w-[260px] md:w-[350px] lg:w-[400px] 
+                               h-[270px] sm:h-[260px] md:h-[350px] lg:h-[400px] 
+                               rounded-2xl shadow-lg hover:scale-105 
+                               transition-transform duration-500 object-cover mx-auto"
+                    decoding="async"
+                  />
+                </LazyLoad>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Motion.div>
+      </div>
     </div>
-  </div>
-);
+  );
+
   return (
     <section id="Projects-section" className="w-full">
       <Section 
