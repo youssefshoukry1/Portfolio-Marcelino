@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <Motion.footer
-      className="w-full py-3 bg-gradient-to-t from-[#0b1f29] via-[#0d2c38] to-[#103846]
+      className="w-full py-8 bg-[#0a1128]
       text-gray-200 flex justify-center items-center px-2 shadow-lg"
       variants={fadeIn}
       initial="hidden"
